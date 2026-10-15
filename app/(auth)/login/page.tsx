@@ -1,129 +1,71 @@
-
 "use client";
-
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { api } from "@/lib/api";
 
 export default function LoginPage() {
   const router = useRouter();
-
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [error, setError] = useState("");
+  const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function handleLogin(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-
-    setError("");
+    setErr("");
     setLoading(true);
-
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            username,
-            password,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || "Login failed");
-        return;
-      }
-
-      // Login successful
-      router.push("/");
-    } catch (error) {
-      console.error("Login error:", error);
-      setError("Could not connect to the server");
+      const data = await api("/api/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+      });
+      localStorage.setItem("token", data.token);
+      router.push("/home");
+    } catch (e: any) {
+      setErr(e.message);
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
-      <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-md">
-        <h1 className="mb-6 text-center text-3xl font-bold">
-          Login
-        </h1>
-
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label
-              htmlFor="username"
-              className="mb-1 block text-sm font-medium"
-            >
-              Username
-            </label>
-
-            <input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-black"
-              placeholder="Enter username"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="password"
-              className="mb-1 block text-sm font-medium"
-            >
-              Password
-            </label>
-
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-black"
-              placeholder="Enter password"
-            />
-          </div>
-
-          {error && (
-            <p className="rounded-md bg-red-100 p-3 text-sm text-red-700">
-              {error}
-            </p>
-          )}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-md bg-black px-4 py-2 font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {loading ? "Logging in..." : "Login"}
-          </button>
-        </form>
-
-        <p className="mt-6 text-center text-sm text-gray-600">
-          Don&apos;t have an account?{" "}
-          <button
-            onClick={() => router.push("/register")}
-            className="font-medium text-black hover:underline"
-          >
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <form
+        onSubmit={onSubmit}
+        className="bg-white p-8 rounded shadow w-96 space-y-4"
+      >
+        <h1 className="text-2xl font-bold">Login</h1>
+        {err && <p className="text-red-500 text-sm">{err}</p>}
+        <input
+          type="email"
+          placeholder="Email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full border rounded px-3 py-2"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full border rounded px-3 py-2"
+        />
+        <button
+          disabled={loading}
+          className="w-full bg-black text-white py-2 rounded"
+        >
+          {loading ? "Logging in..." : "Login"}
+        </button>
+        <p className="text-sm text-center">
+          New user?{" "}
+          <Link href="/register" className="text-blue-600 underline">
             Register
-          </button>
+          </Link>
         </p>
-      </div>
-    </main>
+      </form>
+    </div>
   );
 }
-
