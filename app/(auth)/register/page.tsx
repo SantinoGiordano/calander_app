@@ -23,8 +23,10 @@ export default function RegisterPage() {
       });
       localStorage.setItem("token", data.token);
       router.push("/");
-    } catch (e: any) {
-      setErr(e.message);
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "Something went wrong";
+      setErr(message);
     } finally {
       setLoading(false);
     }
