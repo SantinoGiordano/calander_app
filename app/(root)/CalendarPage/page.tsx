@@ -161,7 +161,7 @@ function CalendarDayCell({
   return (
     <div
       ref={setNodeRef}
-      className={`${className} ${past ? "bg-gray-100 text-gray-400" : ""} ${
+      className={`${className} ${past ? "bg-red-200 text-red-400" : ""} ${
         isOver && date && !past
           ? "bg-blue-50 ring-2 ring-inset ring-blue-400"
           : ""
