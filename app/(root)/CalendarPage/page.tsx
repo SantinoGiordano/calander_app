@@ -224,6 +224,7 @@ export default function CalendarPage() {
   }, [router]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void loadEntries();
   }, [loadEntries]);
 
@@ -659,7 +660,7 @@ export default function CalendarPage() {
                       <div className="flex items-start gap-3">
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
-                            <h3 className="break-words font-semibold text-gray-900">
+                            <h3 className="wrap-break-word font-semibold text-gray-900">
                               {entry.name}
                             </h3>
 
@@ -677,7 +678,7 @@ export default function CalendarPage() {
                           </p>
 
                           {entry.description && (
-                            <p className="mt-2 whitespace-pre-wrap break-words text-sm text-gray-500">
+                            <p className="mt-2 whitespace-pre-wrap wrap-break-word text-sm text-gray-500">
                               {entry.description}
                             </p>
                           )}
