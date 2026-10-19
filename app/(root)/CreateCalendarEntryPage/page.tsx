@@ -13,7 +13,7 @@ export default function CreateCalendarEntryPage() {
     <main className="min-h-screen bg-gray-50 px-4 py-8 sm:px-8">
       <div className="mx-auto max-w-2xl">
         <Link
-          href="/calendar"
+          href="/home"
           className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600"
         >
           <span aria-hidden="true">←</span>
@@ -36,7 +36,7 @@ export default function CreateCalendarEntryPage() {
           <EventForm
             onSubmit={async (data) => {
               await createCalendarEntry(data);
-              router.push("/calendar");
+              router.push("/CalendarPage");
             }}
           />
         </div>

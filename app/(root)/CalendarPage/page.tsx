@@ -187,9 +187,13 @@ export default function CalendarPage() {
         {/* Dashboard heading */}
         <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
-              Your schedule
-            </p>
+            <Link
+              href="/home"
+              className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600"
+            >
+              <span aria-hidden="true">←</span>
+              Back to calendar
+            </Link>
             <h1 className="mt-1 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               My Calendar
             </h1>
@@ -199,7 +203,7 @@ export default function CalendarPage() {
           </div>
 
           <Link
-            href="/create-calendar-entry"
+            href="/CreateCalendarEntryPage"
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-sm transition hover:bg-blue-700"
           >
             <span className="text-xl" aria-hidden="true">
