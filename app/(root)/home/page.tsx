@@ -33,7 +33,7 @@ export default function Page() {
         <button
           type="button"
           onClick={() => router.push("/CreateCalendarEntryPage")}
-          className="group flex min-h-60 flex-col items-start rounded-2xl border border-slate-200/80 bg-white/90 p-7 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-950/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-300"
+          className="group flex min-h-60 cursor-pointer flex-col items-start rounded-2xl border border-slate-200/80 bg-white/90 p-7 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-950/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-300"
         >
           <span className="mb-8 flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-700 transition group-hover:bg-indigo-600 group-hover:text-white">
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-6 w-6">
@@ -53,7 +53,7 @@ export default function Page() {
         <button
           type="button"
           onClick={() => router.push("/CalendarPage")}
-          className="group flex min-h-60 flex-col items-start rounded-2xl border border-slate-200/80 bg-white/90 p-7 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-sky-200 hover:shadow-xl hover:shadow-sky-950/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300"
+          className="group flex min-h-60 cursor-pointer flex-col items-start rounded-2xl border border-slate-200/80 bg-white/90 p-7 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-sky-200 hover:shadow-xl hover:shadow-sky-950/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300"
         >
           <span className="mb-8 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700 transition group-hover:bg-sky-600 group-hover:text-white">
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-6 w-6">
@@ -73,7 +73,7 @@ export default function Page() {
         <button
           type="button"
           onClick={() => router.push("/CreateCalendarEntryPage")}
-          className="group flex min-h-60 flex-col items-start rounded-2xl border border-slate-200/80 bg-white/90 p-7 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-950/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300"
+          className="group flex min-h-60 cursor-pointer flex-col items-start rounded-2xl border border-slate-200/80 bg-white/90 p-7 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-950/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300"
         >
           <span className="mb-8 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 transition group-hover:bg-emerald-600 group-hover:text-white">
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-6 w-6">
