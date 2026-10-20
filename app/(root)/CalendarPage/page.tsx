@@ -644,7 +644,7 @@ export default function CalendarPage() {
                   </p>
 
                   <Link
-                    href="/create-calendar-entry"
+                    href="/CreateCalendarEntryPage"
                     className="mt-4 inline-block text-sm font-semibold text-blue-600 hover:text-blue-700"
                   >
                     Create your first event →
