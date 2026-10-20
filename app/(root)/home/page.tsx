@@ -22,7 +22,7 @@ export default function Page() {
             Calendar workspace
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
-            Pick a directory
+            Pick A Directory
           </h1>
           <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
             Create something new or jump back into your schedule.
@@ -41,7 +41,7 @@ export default function Page() {
               <path d="M7.5 3.5v3M16.5 3.5v3M3.5 9.5h17M12 13v5M9.5 15.5h5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
             </svg>
           </span>
-          <span className="text-lg font-semibold text-slate-900">Create a calendar</span>
+          <span className="text-lg font-semibold text-slate-900">Create An Event </span>
           <span className="mt-2 text-sm leading-6 text-slate-500">
             Start fresh and add your upcoming events.
           </span>
@@ -61,7 +61,7 @@ export default function Page() {
               <path d="M7.5 3.5v3M16.5 3.5v3M3.5 9.5h17M7.5 13h2M12 13h2M16.5 13h.01M7.5 17h2M12 17h2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
             </svg>
           </span>
-          <span className="text-lg font-semibold text-slate-900">View calendar</span>
+          <span className="text-lg font-semibold text-slate-900">View Calendar</span>
           <span className="mt-2 text-sm leading-6 text-slate-500">
             See your schedule and what is coming up.
           </span>
@@ -81,7 +81,7 @@ export default function Page() {
               <path d="M8.5 9h7M8.5 12.5h7M8.5 16h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
             </svg>
           </span>
-          <span className="text-lg font-semibold text-slate-900">View entries</span>
+          <span className="text-lg font-semibold text-slate-900">Manage Events</span>
           <span className="mt-2 text-sm leading-6 text-slate-500">
             Add and manage the events in your calendar.
           </span>
