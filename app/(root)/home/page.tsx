@@ -46,7 +46,7 @@ export default function Page() {
             Start fresh and add your upcoming events.
           </span>
           <span className="mt-auto pt-5 text-sm font-semibold text-indigo-700">
-            Get started <span aria-hidden="true" className="transition group-hover:translate-x-1 inline-block">-&gt;</span>
+            Get started <span aria-hidden="true" className="transition group-hover:translate-x-1 inline-block">←</span>
           </span>
         </button>
 
@@ -66,7 +66,7 @@ export default function Page() {
             See your schedule and what is coming up.
           </span>
           <span className="mt-auto pt-5 text-sm font-semibold text-sky-700">
-            Open calendar <span aria-hidden="true" className="transition group-hover:translate-x-1 inline-block">-&gt;</span>
+            Open calendar <span aria-hidden="true" className="transition group-hover:translate-x-1 inline-block">←</span>
           </span>
         </button>
 
@@ -86,7 +86,7 @@ export default function Page() {
             Add and manage the events in your calendar.
           </span>
           <span className="mt-auto pt-5 text-sm font-semibold text-emerald-700">
-            Manage entries <span aria-hidden="true" className="transition group-hover:translate-x-1 inline-block">-&gt;</span>
+            Manage entries <span aria-hidden="true" className="transition group-hover:translate-x-1 inline-block">←</span>
           </span>
         </button>
       </div>
