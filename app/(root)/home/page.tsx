@@ -72,7 +72,7 @@ export default function Page() {
 
         <button
           type="button"
-          onClick={() => router.push("/CreateCalendarEntryPage")}
+          onClick={() => router.push("/ManageEvents")}
           className="group flex min-h-60 cursor-pointer flex-col items-start rounded-2xl border border-slate-200/80 bg-white/90 p-7 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-950/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300"
         >
           <span className="mb-8 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 transition group-hover:bg-emerald-600 group-hover:text-white">
