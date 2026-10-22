@@ -1,8 +1,8 @@
-const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+import { API_ROUTE } from "@/routes/routes";
 
 export async function api(path: string, opts: RequestInit = {}) {
   const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
-  const res = await fetch(`${API}${path}`, {
+  const res = await fetch(`${API_ROUTE}${path.replace(/^\/+/, "")}`, {
     ...opts,
     headers: {
       "Content-Type": "application/json",

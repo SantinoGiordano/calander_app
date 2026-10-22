@@ -1,3 +1,5 @@
+import { API_ROUTE } from "@/routes/routes";
+
 export type CalendarEntry = {
   id: string;
   userId: string;
@@ -18,7 +20,7 @@ export type CalendarEntryInput = {
   type: string;
 };
 
-const API_URL = "http://localhost:8080/api/calendar";
+// const API_URL = `${API_ROUTE}api/calendar`;
 
 function getToken(): string {
   if (typeof window === "undefined") return "";
@@ -31,7 +33,7 @@ async function request<T>(
 ): Promise<T> {
   const token = getToken();
 
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(`${API_ROUTE}api/calendar`, {
     ...options,
     headers: {
       "Content-Type": "application/json",

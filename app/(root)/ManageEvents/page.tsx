@@ -1,6 +1,7 @@
 "use client";
 
 import { CalendarEntry } from "@/types/types";
+import { API_ROUTE } from "@/routes/routes";
 import React, { useEffect, useState } from "react";
 
 
@@ -18,7 +19,7 @@ export default function ManageEvents() {
           throw new Error("Please log in to view your events.");
         }
 
-        const response = await fetch("http://localhost:8080/api/calendar/", {
+        const response = await fetch(`${API_ROUTE}api/calendar/`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
