@@ -710,11 +710,6 @@ export default function CalendarPage() {
                 (entry) =>
                   `${entry.date}T${entry.time}` <
                   `${today}T${new Date().toTimeString().slice(0, 5)}`,
-              ) && (
-                <p className="mt-5 border-t border-gray-100 pt-4 text-xs text-gray-500">
-                  Past events are hidden from this list but remain on the
-                  calendar.
-                </p>
               )}
             </div>
           </section>
