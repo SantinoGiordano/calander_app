@@ -20,8 +20,6 @@ export type CalendarEntryInput = {
   type: string;
 };
 
-// const API_URL = `${API_ROUTE}api/calendar`;
-
 function getToken(): string {
   if (typeof window === "undefined") return "";
   return localStorage.getItem("token") ?? "";
@@ -32,8 +30,10 @@ async function request<T>(
   options: RequestInit = {},
 ): Promise<T> {
   const token = getToken();
+  const url = `${API_ROUTE}api/calendar/${path.replace(/^\/+/, "")}`;
+  const method = options.method ?? "GET";
 
-  const response = await fetch(`${API_ROUTE}api/calendar`, {
+  const response = await fetch(url, {
     ...options,
     headers: {
       "Content-Type": "application/json",
@@ -42,11 +42,36 @@ async function request<T>(
     },
   });
 
-  const data = await response.json().catch(() => ({}));
+  const responseBody = await response.text();
+  let data: unknown = {};
+
+  if (responseBody) {
+    try {
+      data = JSON.parse(responseBody);
+    } catch {
+      data = {};
+    }
+  }
 
   if (!response.ok) {
+    console.error("[calendar API] request failed", {
+      method,
+      url,
+      status: response.status,
+      statusText: response.statusText,
+      responseBody: responseBody.slice(0, 1000),
+    });
+
+    const backendMessage =
+      typeof data === "object" &&
+      data !== null &&
+      "error" in data &&
+      typeof data.error === "string"
+        ? data.error
+        : "";
+
     throw new Error(
-      data.error || `Request failed (${response.status})`,
+      backendMessage || `Request failed (${response.status})`,
     );
   }
 
