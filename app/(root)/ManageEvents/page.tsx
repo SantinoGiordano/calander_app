@@ -3,7 +3,7 @@
 import { CalendarEntry } from "@/types/types";
 import { API_ROUTE } from "@/routes/routes";
 import React, { useEffect, useState } from "react";
-
+import Link from "next/link";
 
 export default function ManageEvents() {
   const [events, setEvents] = useState<CalendarEntry[]>([]);
@@ -63,6 +63,13 @@ export default function ManageEvents() {
 
   return (
     <div className="p-6">
+      <Link
+        href="/home"
+        className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600"
+      >
+        <span aria-hidden="true">←</span>
+        Back to calendar
+      </Link>
       <div className="mb-6">
         <h1 className="text-2xl font-bold">Manage Events</h1>
 
