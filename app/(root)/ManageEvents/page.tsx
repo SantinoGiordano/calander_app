@@ -5,18 +5,18 @@ import { API_ROUTE } from "@/routes/routes";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function ManageEvents() {
-  const [events, setEvents] = useState<CalendarEntry[]>([]);
+export default function Managetasks() {
+  const [tasks, settasks] = useState<CalendarEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchEvents = async () => {
+    const fetchtasks = async () => {
       try {
         const token = localStorage.getItem("token");
 
         if (!token) {
-          throw new Error("Please log in to view your events.");
+          throw new Error("Please log in to view your tasks.");
         }
 
         const response = await fetch(`${API_ROUTE}api/calendar/`, {
@@ -34,7 +34,7 @@ export default function ManageEvents() {
 
         const data: CalendarEntry[] = await response.json();
 
-        setEvents(data);
+        settasks(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Something went wrong.");
       } finally {
@@ -42,13 +42,13 @@ export default function ManageEvents() {
       }
     };
 
-    fetchEvents();
+    fetchtasks();
   }, []);
 
   if (loading) {
     return (
       <div className="p-6">
-        <p>Loading events...</p>
+        <p>Loading Tasks...</p>
       </div>
     );
   }
@@ -71,17 +71,17 @@ export default function ManageEvents() {
         Back to calendar
       </Link>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Manage Events</h1>
+        <h1 className="text-2xl font-bold">Manage Tasks</h1>
 
         <p className="mt-1 text-sm text-gray-500">
-          You have {events.length} calendar{" "}
-          {events.length === 1 ? "event" : "events"}.
+          You have {tasks.length} calendar{" "}
+          {tasks.length === 1 ? "event" : "tasks"}.
         </p>
       </div>
 
-      {events.length === 0 ? (
+      {tasks.length === 0 ? (
         <div className="rounded-xl border border-dashed p-10 text-center">
-          <h2 className="text-lg font-semibold">No events found</h2>
+          <h2 className="text-lg font-semibold">No tasks found</h2>
 
           <p className="mt-2 text-sm text-gray-500">
             Create a calendar event to see it here.
@@ -89,7 +89,7 @@ export default function ManageEvents() {
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {events.map((event) => (
+          {tasks.map((event) => (
             <div
               key={event.id}
               className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
