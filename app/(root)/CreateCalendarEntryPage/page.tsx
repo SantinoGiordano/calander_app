@@ -33,12 +33,12 @@ export default function CreateCalendarEntryPage() {
             </p>
           </div>
 
-          <EventForm
+          {/* <EventForm
             onSubmit={async (data) => {
               await createCalendarEntry(data);
               router.push("/CalendarPage");
             }}
-          />
+          /> */}
         </div>
       </div>
     </main>
