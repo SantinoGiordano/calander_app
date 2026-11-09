@@ -26,10 +26,10 @@ export default function CreateCalendarEntryPage() {
               Calendar
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900">
-              Create an event
+              Create an Task
             </h1>
             <p className="mt-2 text-gray-500">
-              Add an event to your personal calendar.
+              Add an Task to your personal calendar.
             </p>
           </div>
 
