@@ -48,54 +48,75 @@ export default function CreateTaskPage() {
   };
 
   // CREATE TASK
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
 
-    setError("");
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (!title.trim()) {
-      setError("Please enter a task title.");
-      return;
-    }
+  setError("");
 
-    if (!deadline) {
-      setError("Please select a deadline.");
-      return;
-    }
+  console.log("========== TASK FORM SUBMISSION ==========");
+  console.log("Title:", title);
+  console.log("Deadline:", deadline);
+  console.log("Steps:", steps);
 
-    if (steps.length === 0) {
-      setError("Please add at least one task step.");
-      return;
-    }
+  if (!title.trim()) {
+    setError("Please enter a task title.");
+    return;
+  }
 
-    if (steps.some((step) => !step.title.trim())) {
-      setError("Please fill out all task steps.");
-      return;
-    }
+  if (!deadline) {
+    setError("Please select a deadline.");
+    return;
+  }
 
-    try {
-      setLoading(true);
+  if (steps.length === 0) {
+    setError("Please add at least one task step.");
+    return;
+  }
 
-      await createTask({
-        title: title.trim(),
-        deadline,
-        steps: steps.map((step) => ({
-          ...step,
-          title: step.title.trim(),
-          completed: false,
-        })),
-      });
+  if (steps.some((step) => !step.title.trim())) {
+    setError("Please fill out all task steps.");
+    return;
+  }
 
-      router.push("/tasks");
-      router.refresh();
+  try {
+    setLoading(true);
 
-    } catch (error) {
-      console.error("Create task error:", error);
-      setError("Something went wrong while creating your task.");
-    } finally {
-      setLoading(false);
-    }
-  };
+    const taskData = {
+      title: title.trim(),
+      deadline,
+      steps: steps.map((step) => ({
+        ...step,
+        title: step.title.trim(),
+        completed: false,
+      })),
+    };
+
+    console.log("FINAL TASK DATA:", taskData);
+
+    const result = await createTask(taskData);
+
+    console.log("CREATE TASK RESULT:", result);
+
+    console.log("Redirecting to Manage Tasks...");
+
+    router.push("/ManageEvents");
+    router.refresh();
+
+  } catch (error) {
+    console.error("TASK SUBMISSION FAILED:", error);
+
+    setError(
+      error instanceof Error
+        ? error.message
+        : "Something went wrong while creating your task."
+    );
+
+  } finally {
+    setLoading(false);
+    console.log("========== TASK FORM SUBMISSION END ==========");
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#111111] p-6">
@@ -244,7 +265,7 @@ export default function CreateTaskPage() {
           <div className="flex justify-end gap-3">
 
             <Link
-              href="/tasks"
+              href="/ManageEvents"
               className="px-5 py-3 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
             >
               Cancel

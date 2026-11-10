@@ -45,8 +45,17 @@ export async function getTasks(): Promise<Task[]> {
 }
 
 // CREATE TASK
+
 export async function createTask(task: TaskInput): Promise<Task> {
+  console.log("========== CREATE TASK START ==========");
+
+  console.log("API URL:", API_URL);
+  console.log("Task being submitted:", task);
+  console.log("JWT Token exists:", !!getToken());
+
   try {
+    console.log("Sending POST request...");
+
     const response = await fetch(API_URL, {
       method: "POST",
       headers: {
@@ -56,18 +65,54 @@ export async function createTask(task: TaskInput): Promise<Task> {
       body: JSON.stringify(task),
     });
 
-    if (!response.ok) {
-      throw new Error("Failed to create task");
+    console.log("========== SERVER RESPONSE ==========");
+    console.log("Status:", response.status);
+    console.log("Status Text:", response.statusText);
+    console.log("Response OK:", response.ok);
+
+    // Read the response body
+    const responseText = await response.text();
+
+    console.log("Raw server response:", responseText);
+
+    let data: any = {};
+
+    try {
+      data = responseText ? JSON.parse(responseText) : {};
+    } catch {
+      console.error("Server returned invalid JSON:", responseText);
     }
 
-    const data = await response.json();
+    console.log("Parsed server response:", data);
+
+    if (!response.ok) {
+      console.error("CREATE TASK FAILED:", {
+        status: response.status,
+        statusText: response.statusText,
+        response: data,
+      });
+
+      throw new Error(
+        data.message ||
+        data.error ||
+        `Request failed with status ${response.status}`
+      );
+    }
+
+    console.log("TASK CREATED SUCCESSFULLY:", data);
+    console.log("========== CREATE TASK END ==========");
 
     return data.task;
+
   } catch (error) {
-    console.error("Create task error:", error);
+    console.error("========== CREATE TASK ERROR ==========");
+    console.error("Error:", error);
+    console.error("========== CREATE TASK END ==========");
+
     throw error;
   }
 }
+
 
 // UPDATE TASK
 export async function updateTask(
