@@ -81,7 +81,7 @@ export default function Page() {
               <path d="M8.5 9h7M8.5 12.5h7M8.5 16h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
             </svg>
           </span>
-          <span className="text-lg font-semibold text-slate-900">Manage Events</span>
+          <span className="text-lg font-semibold text-slate-900">Manage Tasks</span>
           <span className="mt-2 text-sm leading-6 text-slate-500">
             Add and manage the events in your calendar.
           </span>
