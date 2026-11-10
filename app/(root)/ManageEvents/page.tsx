@@ -72,6 +72,7 @@ export default function Managetasks() {
       </Link>
       <div className="mb-6">
         <h1 className="text-2xl font-bold">Manage Tasks</h1>
+        <Link className="text-2xl font-bold" href={"/ManageEvents/createTasks"}>Create Tasks</Link>
 
         <p className="mt-1 text-sm text-gray-500">
           You have {tasks.length} calendar{" "}
