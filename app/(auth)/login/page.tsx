@@ -57,9 +57,20 @@ export default function LoginPage() {
         />
         <button
           disabled={loading}
+          aria-busy={loading}
           className="w-full bg-black text-white py-2 rounded"
         >
-          {loading ? "Logging in..." : "Login"}
+          {loading ? (
+            <>
+              <span
+                className="loading loading-spinner loading-sm"
+                aria-hidden="true"
+              />{" "}
+              Logging in...
+            </>
+          ) : (
+            "Login"
+          )}
         </button>
         <p className="text-sm text-center">
           New user?{" "}
