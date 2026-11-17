@@ -66,7 +66,6 @@ export default function LoginPage() {
                 className="loading loading-spinner loading-sm"
                 aria-hidden="true"
               />{" "}
-              Logging in...
             </>
           ) : (
             "Login"
